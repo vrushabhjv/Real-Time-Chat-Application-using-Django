@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# URLs for inbuilt login-redirect, logout-redirect
+LOGOUT_REDIRECT_URL="/"
+LOGIN_REDIRECT_URL="/rooms/"
+LOGIN_URL="/login/" # Will be redirected to this page when an user is not authenticated but tries to access authenticated content
 
 # Application definition
 
