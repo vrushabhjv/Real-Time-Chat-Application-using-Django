@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+IMP.text
 chatenv
 # C extensions
 *.so

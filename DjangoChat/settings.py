@@ -77,6 +77,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'DjangoChat.wsgi.application'
 ASGI_APPLICATION = 'DjangoChat.asgi.application'
 
+CHANNEL_LAYERS = {
+    'default':{
+        'BACKEND':'channels.layers.InMemoryChannelLayer' #This is the in-memory channel layer
+        #while using inMenory channel layer, if server is restarted, the all data is lost. So, we use redis channel layer or anything similar 
+        # 'BACKEND':'channels.layers.RedisChannelLayer' #This is the redis channel layer 
+        # 'CONFIG':{'hosts': [('127.0.0.1', 6379)]} #This is the redis channel layer
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

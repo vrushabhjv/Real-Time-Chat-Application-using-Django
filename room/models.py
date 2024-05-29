@@ -4,3 +4,8 @@ from django.db import models
 class Room(models.Model):
     name=models.CharField(max_length=225)
     slug=models.SlugField(unique=True) # A slug is a short, human-readable, and unique identifier for a web page or resource. It's typically used in the URL of a web page to make it more user-friendly and SEO-friendly. For example, in a blog post URL like "https://example.com/blog/my-awesome-post/", the slug would be "my-awesome-post"
+    
+    def __str__(self):
+        return self.name
+    # The __str__method in Django models is used to provide a human-readable string representation of the model instance. It is a special method in Python that is called when you try to convert an object to a string, such as when printing the object or using it in a template.
+    # For example, if you have a `Transaction` model, the `__str__` method can be used to display the transaction details in a more user-friendly way, such as `"John Doe - Groceries - Bought milk"` instead of the default string representation, which might be something like `"<Transaction object (1)>"`.
