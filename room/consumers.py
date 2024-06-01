@@ -3,6 +3,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import sync_to_async
 from .models import ChatMessage, Room
 from django.contrib.auth.models import User
+from html import escape
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -34,8 +35,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
         username = data['username']
         room = data['room']
         
-        await self.save_message(username, room, message)
+        await self.save_message(username, room, message) # Save the message to the database
         
+        # The receive() function is the main entry point for handling incoming WebSocket messages in the 'ChatConsumer' class. It is responsible for processing the client's message, storing it in the database, and then broadcasting it to all other clients in the same room.
         await self.channel_layer.group_send(
             self.room_group_name,
             {
@@ -46,9 +48,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
             }
         )
         
+    # this function is called when a message is received from the group 
+    # it sends the message to the client
     async def chat_message(self, event):
-        message = event['message']
-        username = event['username']
+        message = escape(event['message'])
+        username = escape(event['username'])
         room = event['room']
         
         await self.send(text_data=json.dumps({

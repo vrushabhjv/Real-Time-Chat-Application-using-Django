@@ -9,10 +9,10 @@
 <div class="lg:w-2/4 mx-4 lg:mx-auto p-4 bg-white rounded-xl">
     <div class="chat-messages space-y-3" id="chat-messages">
         {% for msg in chatmessages %}
-            <div class="p-4 bg-gray-200 rounded-xl">';
+            <div class="p-4 bg-gray-200 rounded-xl">
                 <p class="font-semibold"> {{ msg.user.username}} </p>
                 <p> {{ msg.content }} </p>
-        </div>
+            </div>
         {% endfor %}
         {% comment %} Messages get added over here using javascript {% endcomment %}
     </div>
@@ -74,6 +74,7 @@ If the value of "room.slug" is "my-room", the resulting JavaScript code would be
                     html+='<p>'+data.message + '</p></div>';
 
                 document.querySelector('#chat-messages').innerHTML += html;
+                scrollToBottom(); //Scroll to bottom when a new message is sent
             }
             else{
                 alert("The message was empty!!")
@@ -104,5 +105,13 @@ If the value of "room.slug" is "my-room", the resulting JavaScript code would be
 
             return false;
         }
+
+        //To scroll the messages to the bottom
+        function scrollToBottom() {
+            const objDiv = document.querySelector("#chat-messages");
+            objDiv.scrollTop = objDiv.scrollHeight;
+        }
+
+        scrollToBottom(); // Calling the function when application loads
     </script>
 {% endblock %}
