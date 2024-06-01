@@ -35,6 +35,7 @@ LOGIN_URL="/login/" # Will be redirected to this page when an user is not authen
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne', #This is for the asgi server
     'channels',
     'django.contrib.admin',
     'django.contrib.auth',

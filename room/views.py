@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Room
+from .models import Room, ChatMessage
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -15,5 +15,7 @@ def rooms(request):
 @login_required 
 def room(request, slug):
     room = Room.objects.get(slug=slug)
+    # chatmessages = ChatMessage.objects.filter(room=room)[0:25]
+    chatmessages = ChatMessage.objects.filter(room=room).order_by('-date_added')[0:25][::-1]
     
-    return render(request, 'room/room.html', {'room':room})
+    return render(request, 'room/room.html', {'room':room, 'chatmessages':chatmessages})

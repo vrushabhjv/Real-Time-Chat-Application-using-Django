@@ -8,6 +8,12 @@
 
 <div class="lg:w-2/4 mx-4 lg:mx-auto p-4 bg-white rounded-xl">
     <div class="chat-messages space-y-3" id="chat-messages">
+        {% for msg in chatmessages %}
+            <div class="p-4 bg-gray-200 rounded-xl">';
+                <p class="font-semibold"> {{ msg.user.username}} </p>
+                <p> {{ msg.content }} </p>
+        </div>
+        {% endfor %}
         {% comment %} Messages get added over here using javascript {% endcomment %}
     </div>
 
@@ -82,7 +88,7 @@ If the value of "room.slug" is "my-room", the resulting JavaScript code would be
 
         document.querySelector('#chat-message-submit').onclick = function(e) {
             e.preventDefault(); // By calling 'e.preventDefault()', you're preventing the browser from sending the form data to the server and reloading the page, allowing you to handle the form submission in your own custom way using JavaScript.
-            
+
             // In summary, 'e.preventDefault()'and 'return false' are used to prevent the default form submission behavior (which would cause a page reload and potentially lead to the CSRF token error),  which is necessary to avoid the CSRF token error and to handle the message sending through the WebSocket connection instead of a traditional form submission.
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
