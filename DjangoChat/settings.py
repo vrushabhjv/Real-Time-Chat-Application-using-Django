@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-eaug5@^5(j@-*-%gi8ka4&)gvvhn%a4&+&ez7@08)(0t3gx&08
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ConVersa-env.eba-xenftyrh.us-east-1.elasticbeanstalk.com']
 
 # URLs for inbuilt login-redirect, logout-redirect
 LOGOUT_REDIRECT_URL="/"
