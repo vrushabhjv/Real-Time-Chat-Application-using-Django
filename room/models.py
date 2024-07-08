@@ -12,6 +12,7 @@ class Room(models.Model):
     
 class ChatMessage(models.Model):
     room =models.ForeignKey(Room,related_name='messages',on_delete=models.CASCADE)
+    #  related_name is an attribute that can be used to specify the name of the reverse relation in Django models and it's an useful utility to write cleaner code. 
     user = models.ForeignKey(User, related_name='messages', on_delete=models.CASCADE)
     content = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)

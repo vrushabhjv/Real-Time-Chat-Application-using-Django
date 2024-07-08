@@ -7,4 +7,5 @@ from . import consumers
 print("inside routiing")
 websocket_urlpatterns=[
     path('ws/<str:room_name>/', consumers.ChatConsumer.as_asgi()), # Asynchronous Server Gateway Interface
+    # as_asgi() is similar in purpose to django's as_view()
 ]

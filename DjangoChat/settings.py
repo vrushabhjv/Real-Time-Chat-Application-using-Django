@@ -75,8 +75,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DjangoChat.wsgi.application'
-ASGI_APPLICATION = 'DjangoChat.asgi.application'
+WSGI_APPLICATION = 'DjangoChat.wsgi.application' # WSGI Application entry point
+ASGI_APPLICATION = 'DjangoChat.asgi.application' # Specifies the ASGI application entry point for handling asynchronous protocols like WebSockets. It is used by ASGI servers like Daphne to serve the Django application in an asynchronous environment.
 
 CHANNEL_LAYERS = {
     'default':{

@@ -9,14 +9,14 @@ def frontpage(request):
 
 def signUp(request):
     if request.method=="POST":
-        form=SignUpForm(request.POST)
+        form=SignUpForm(request.POST) #This populates the form instance with the submitted data, binding it to the form's fields.
         
         if form.is_valid():
             user=form.save()
             
             login(request, user)
             
-            return redirect('frontpage')
+            return redirect('frontpage') 
     else:
         form=SignUpForm()
         

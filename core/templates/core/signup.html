@@ -6,6 +6,9 @@
     <h1 class="text-3xl lg:text-6xl text-white">Sign Up</h1>
 </div>
 
+{% comment %} The form instance is not directly used to render the fields in this case, but it could be. For example, you could use '{% for field in form %}' to iterate over and render each field. {% endcomment %}
+
+{% comment %}In most practical terms, both an empty action attribute and action="." achieve the same result: they submit the form data to the same page that hosts the form. This is often useful in scenarios where the form processing logic is on the same page{% endcomment %}
 <form method='post' action="." class='lg:w-1/4 px-4 mx-auto'>
     {% csrf_token %}
     <div class='mb-5'>
